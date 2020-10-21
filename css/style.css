@@ -1,11 +1,986 @@
-body {
+@charset "UTF-8";
+/*
+$color: (
+    fondo-body: whitesmoke,
+    fondo-logo: lightskyblue,
+    texto-h1: coral,
+    texto-h2: whitesmoke
+    texto-h3: lightblue,
+    fondo-card: slategray
+);
+*/
+html, body {
   margin: 0;
   padding: 0;
-  background-color: lightseagreen;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-p {
-  color: blue;
-  font-size: 3em;
+@media (max-width: 450px) {
+  body {
+    background-color: slategray;
+    height: 300vh;
+  }
+  .contenedor {
+    display: -ms-grid;
+    display: grid;
+        grid-template-areas: "header" "logo" "main" "article" "social";
+    -ms-grid-rows: 0.1fr 2.5fr 10fr 55fr 1.5fr;
+        grid-template-rows: 0.1fr 2.5fr 10fr 55fr 1.5fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    /* Le pongo en plano atrás */
+  }
+  .contenedor menu {
+    display: none;
+  }
+  .contenedor #viaLacteaLaptop {
+    display: none;
+  }
+  .contenedor #agujeroNegroLaptop {
+    display: none;
+  }
+  .contenedor #magnetarLaptop {
+    display: none;
+  }
+  .contenedor #agujeroGusanoLaptop {
+    display: none;
+  }
+  .contenedor .up {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    background-color: azure;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 300px;
+    right: 15px;
+  }
+  .contenedor .up img {
+    width: 2em;
+  }
+  .contenedor header {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: header;
+    background-color: lightslategrey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor header .explorando {
+    margin-right: 1em;
+    font-size: 0.8em;
+    color: darkslategrey;
+  }
+  .contenedor header .logoHamburguesa {
+    z-index: 1;
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor header .logoHamburguesa i {
+    color: darkslategrey;
+  }
+  .contenedor header .logoHamburguesa:target {
+    z-index: -1;
+  }
+  .contenedor #menu {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    /* Transicion */
+    opacity: 0;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+  }
+  .contenedor #menu a {
+    text-decoration: none;
+  }
+  .contenedor #menu ul {
+    border: 1px solid darkslategrey;
+    background-color: chocolate;
+    padding: 5px 5px 5px 5px;
+  }
+  .contenedor #menu ul li {
+    list-style: none;
+    border: 1px solid darkslategray;
+    padding: 5px;
+  }
+  .contenedor #menu .xMenu {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: gray;
+    border: 1px solid darkslategrey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor #menu:target {
+    /* Le pongo en plano adelante */
+    z-index: 5;
+    /* Transicion */
+    opacity: 1;
+  }
+  .contenedor #menu:target a {
+    color: whitesmoke;
+  }
+  .contenedor #menu:target ul li {
+    color: whitesmoke;
+  }
+  .contenedor .logo {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: logo;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro .logoCohete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 3px solid blue;
+    border-radius: 50%;
+    background-color: yellow;
+    -webkit-box-shadow: 0px 0px 37px 2px #176d8c;
+    box-shadow: 0px 0px 37px 2px #176d8c;
+    height: 1em;
+    width: 1em;
+    font-size: 2.5em;
+  }
+  .contenedor .logo .logoRecuadro .titulo h1 {
+    margin: 0 0 0 10px;
+    font-size: 2em;
+    color: coral;
+  }
+  .contenedor main {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: main;
+    background-image: url(../imagenes/Hubble_Mobile.jpg);
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor main .objetivo {
+    width: 90%;
+    font-size: 1em;
+    color: lightblue;
+  }
+  .contenedor main .objetivo .detalle {
+    width: 90%;
+    font-size: 0.8em;
+    text-align: justify;
+  }
+  .contenedor main .objetivo .detalle .detalleTablet {
+    display: none;
+  }
+  .contenedor main .objetivo .detalle .detalleLaptop {
+    display: none;
+  }
+  .contenedor article {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    grid-area: article;
+    background-color: slategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor article .card {
+    width: 80%;
+    border: 1px solid lightblue;
+    -webkit-box-shadow: 0px 0px 33px -1px rgba(11, 214, 153, 0.67);
+    box-shadow: 0px 0px 33px -1px rgba(11, 214, 153, 0.67);
+  }
+  .contenedor article .card img {
+    width: 100%;
+  }
+  .contenedor article .card h3 {
+    padding: 10px;
+    font-size: 20px;
+    margin: 0;
+    color: blue;
+  }
+  .contenedor article .card p {
+    padding: 10px;
+    font-size: 12px;
+    margin: 0;
+    text-align: justify;
+  }
+  .contenedor .social {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    grid-area: social;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1.5em;
+  }
+  .contenedor .social i {
+    color: whitesmoke;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 451px) and (max-width: 800px) {
+  body {
+    background-color: slategray;
+    height: 200vh;
+  }
+  .contenedor {
+    display: -ms-grid;
+    display: grid;
+        grid-template-areas: "header" "logo" "main" "article" "social";
+    -ms-grid-rows: 0.1fr 3.5fr 18fr 80fr 1.5fr;
+        grid-template-rows: 0.1fr 3.5fr 18fr 80fr 1.5fr;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    /* Le pongo en plano atrás */
+  }
+  .contenedor menu {
+    display: none;
+  }
+  .contenedor #viaLacteaLaptop {
+    display: none;
+  }
+  .contenedor #agujeroNegroLaptop {
+    display: none;
+  }
+  .contenedor #magnetarLaptop {
+    display: none;
+  }
+  .contenedor #agujeroGusanoLaptop {
+    display: none;
+  }
+  .contenedor .up {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    background-color: azure;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 300px;
+    right: 15px;
+  }
+  .contenedor .up img {
+    width: 2em;
+  }
+  .contenedor header {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    grid-area: header;
+    background-color: lightblue;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor header .explorando {
+    margin-right: 1em;
+    font-size: 0.8em;
+    color: darkslategrey;
+  }
+  .contenedor header .logoHamburguesa {
+    z-index: 1;
+    position: relative;
+    height: 1.5em;
+    width: 1.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor header .logoHamburguesa i {
+    color: darkslategrey;
+  }
+  .contenedor header .logoHamburguesa:target {
+    z-index: -1;
+  }
+  .contenedor #menu {
+    position: absolute;
+    top: 0;
+    left: 0px;
+    margin: 0;
+    padding: 0;
+    /* Transicion */
+    opacity: 0;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s;
+  }
+  .contenedor #menu a {
+    text-decoration: none;
+  }
+  .contenedor #menu ul {
+    border: 1px solid darkslategrey;
+    background-color: chocolate;
+    padding: 5px 5px 5px 5px;
+  }
+  .contenedor #menu ul li {
+    list-style: none;
+    border: 1px solid darkslategrey;
+    padding: 5px;
+  }
+  .contenedor #menu .xMenu {
+    height: 1.5em;
+    width: 1.5em;
+    background-color: gray;
+    border: 1px solid darkslategrey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor #menu:target {
+    /* Le pongo en plano adelante */
+    z-index: 5;
+    /* Transicion */
+    opacity: 1;
+  }
+  .contenedor #menu:target a {
+    color: whitesmoke;
+  }
+  .contenedor #menu:target ul li {
+    color: whitesmoke;
+  }
+  .contenedor .logo {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    grid-area: logo;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro {
+    width: 25%;
+    height: 60%;
+    border: 1px solid red;
+    background-color: whitesmoke;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro .logoCohete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 3px solid blue;
+    border-radius: 50%;
+    background-color: yellow;
+    -webkit-box-shadow: 0px 0px 37px 2px #176d8c;
+    box-shadow: 0px 0px 37px 2px #176d8c;
+    height: 1em;
+    width: 1em;
+    font-size: 2.5em;
+  }
+  .contenedor .logo .logoRecuadro .titulo h1 {
+    margin: 0 0 0 10px;
+    font-size: 2em;
+    color: coral;
+  }
+  .contenedor main {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    grid-area: main;
+    background-image: url(../imagenes/Hubble_Tablet.jpg);
+    background-repeat: no-repeat;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: whitesmoke;
+  }
+  .contenedor main .objetivo {
+    width: 90%;
+    font-size: 1em;
+  }
+  .contenedor main .objetivo .detalle {
+    width: 90%;
+    font-size: 0.8em;
+    text-align: justify;
+  }
+  .contenedor main .objetivo .detalle .detalleLaptop {
+    display: none;
+  }
+  .contenedor article {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    grid-area: article;
+    background-color: slategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor article .card {
+    width: 80%;
+    border: 1px solid lightblue;
+    -webkit-box-shadow: 0px 0px 33px -1px rgba(11, 214, 153, 0.67);
+    box-shadow: 0px 0px 33px -1px rgba(11, 214, 153, 0.67);
+  }
+  .contenedor article .card img {
+    width: 100%;
+  }
+  .contenedor article .card h3 {
+    padding: 10px;
+    font-size: 20px;
+    margin: 0;
+    color: blue;
+    font-size: 1.5em;
+  }
+  .contenedor article .card p {
+    padding: 10px;
+    font-size: 12px;
+    margin: 0;
+    text-align: justify;
+  }
+  .contenedor .social {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    grid-area: social;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 1.5em;
+  }
+  .contenedor .social i {
+    color: whitesmoke;
+    margin: 10px;
+  }
+}
+
+@media (min-width: 801px) {
+  body {
+    height: 200vh;
+    background-color: slategray;
+  }
+  .contenedor {
+    display: -ms-grid;
+    display: grid;
+        grid-template-areas: "logo     logo        logo     logo            logo" "menu     menu        menu     menu            menu" "main     main        main     main            main" "vacio1   viaLactea   vacio2   agujeroNegro    vacio3" "vacio1   magnetar    vacio2   agujeroGusano   vacio3" "social   social      social   social          social";
+    -ms-grid-rows: 10fr 3fr 80fr 75fr 75fr 8fr;
+        grid-template-rows: 10fr 3fr 80fr 75fr 75fr 8fr;
+    -ms-grid-columns: 5fr 20fr 5fr 20fr 5fr;
+        grid-template-columns: 5fr 20fr 5fr 20fr 5fr;
+  }
+  .contenedor .logo {
+    display: none;
+  }
+  .contenedor header {
+    display: none;
+  }
+  .contenedor #menu {
+    display: none;
+  }
+  .contenedor article {
+    display: none;
+  }
+  .contenedor .up {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    background-color: azure;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 300px;
+    right: 70px;
+  }
+  .contenedor .up img {
+    width: 2em;
+  }
+  .contenedor .logo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: logo;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro {
+    width: 30%;
+    height: 80%;
+    border: 1px solid red;
+    background-color: whitesmoke;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor .logo .logoRecuadro .logoCohete {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 3px solid blue;
+    border-radius: 50%;
+    background-color: yellow;
+    -webkit-box-shadow: 0px 0px 37px 2px #176d8c;
+    box-shadow: 0px 0px 37px 2px #176d8c;
+    height: 1.5em;
+    width: 1.5em;
+    font-size: 3em;
+  }
+  .contenedor .logo .logoRecuadro .titulo h1 {
+    margin: 0 0 0 10px;
+    font-size: 2em;
+    color: coral;
+  }
+  .contenedor menu {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: menu;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: blue;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: yellow;
+  }
+  .contenedor menu .menu-principal {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 30%;
+  }
+  .contenedor menu .menu-principal li {
+    list-style: none;
+  }
+  .contenedor menu .menu-principal li:hover .menu-interior {
+    visibility: visible;
+  }
+  .contenedor menu .menu-interior {
+    position: absolute;
+    visibility: hidden;
+    /* 1 - Estilo Desplegable - Sacar Identado */
+    padding: 0;
+    /* 2 - Estilo Desplegable - Fondo, Borde, Color, Ancho */
+    background-color: lightblue;
+    border: 1px solid black;
+    color: black;
+    width: 150px;
+    /* 3 - Estilo Desplegable - Efecto Sombreado */
+    -webkit-box-shadow: 10px 10px 9px -4px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 9px -4px rgba(0, 0, 0, 0.75);
+    /* 4 - Estilo Desplegable - Saco Subrayado */
+    /* 5 - Estilo Desplegable - Recuadro Interior */
+    /* 6 - Estilo Desplegable - Efecto Color */
+  }
+  .contenedor menu .menu-interior a {
+    text-decoration: none;
+    color: darkslateblue;
+  }
+  .contenedor menu .menu-interior li {
+    list-style: none;
+    padding: 5px;
+    border-bottom: 1px solid black;
+  }
+  .contenedor menu .menu-interior li:hover {
+    background-color: lightgoldenrodyellow;
+  }
+  .contenedor main {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: main;
+    background-image: url(../imagenes/Hubble_Tablet.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: whitesmoke;
+  }
+  .contenedor main .objetivo {
+    width: 90%;
+  }
+  .contenedor main .objetivo h2 {
+    font-size: 3em;
+    color: lightblue;
+  }
+  .contenedor main .objetivo .detalle {
+    width: 90%;
+    font-size: 1em;
+    text-align: justify;
+  }
+  .contenedor #viaLacteaLaptop, .contenedor #agujeroNegroLaptop, .contenedor #magnetarLaptop, .contenedor #agujeroGusanoLaptop {
+    background-color: slategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .contenedor #viaLacteaLaptop .card, .contenedor #agujeroNegroLaptop .card, .contenedor #magnetarLaptop .card, .contenedor #agujeroGusanoLaptop .card {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    border: 1px solid lightblue;
+    width: 100%;
+    -webkit-box-shadow: 5px 5px 15px black;
+            box-shadow: 5px 5px 15px black;
+  }
+  .contenedor #viaLacteaLaptop .card h3, .contenedor #agujeroNegroLaptop .card h3, .contenedor #magnetarLaptop .card h3, .contenedor #agujeroGusanoLaptop .card h3 {
+    color: blue;
+    font-size: 2em;
+  }
+  .contenedor #viaLacteaLaptop .card p, .contenedor #agujeroNegroLaptop .card p, .contenedor #magnetarLaptop .card p, .contenedor #agujeroGusanoLaptop .card p {
+    margin: 15px;
+    text-align: justify;
+  }
+  .contenedor #viaLacteaLaptop .card img, .contenedor #agujeroNegroLaptop .card img, .contenedor #magnetarLaptop .card img, .contenedor #agujeroGusanoLaptop .card img {
+    width: 100%;
+  }
+  .contenedor #viaLacteaLaptop {
+    -ms-grid-row: 4;
+    -ms-grid-column: 2;
+    grid-area: viaLactea;
+  }
+  .contenedor #agujeroNegroLaptop {
+    -ms-grid-row: 4;
+    -ms-grid-column: 4;
+    grid-area: agujeroNegro;
+  }
+  .contenedor #magnetarLaptop {
+    -ms-grid-row: 5;
+    -ms-grid-column: 2;
+    grid-area: magnetar;
+  }
+  .contenedor #agujeroGusanoLaptop {
+    -ms-grid-row: 5;
+    -ms-grid-column: 4;
+    grid-area: agujeroGusano;
+  }
+  .contenedor .social {
+    -ms-grid-row: 6;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5;
+    grid-area: social;
+    background-color: darkslategray;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 2em;
+  }
+  .contenedor .social i {
+    margin: 10px;
+    color: whitesmoke;
+  }
 }
 /*# sourceMappingURL=style.css.map */

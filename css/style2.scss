@@ -1,0 +1,182 @@
+
+// PALETA DE COLORES
+
+@import 'colores';
+
+// FUNCION
+
+@mixin centrar ($direccion, $content, $items) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $content;
+    align-items: $items;
+}
+
+// ESTILO GLOBAL BODY
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// LAPTOP
+
+@media (min-width: 801px) {
+
+    body {
+        height:100vh;
+
+        background-color: map-get($color, fondo-body);
+    }
+
+    .contenedor {
+        display: grid;
+
+        grid-template-areas: 
+        "logo   logo   logo  logo    logo"
+        "menu   menu   menu   menu   menu"
+        "main   main   main   main   main"
+        ;
+
+        grid-template-rows: 10fr 3fr 100fr;
+        grid-template-columns: 5fr 20fr 5fr 20fr 5fr;
+
+        .logo {
+            grid-area: logo;
+
+            background-color: map-get($color, fondo-logo);
+
+            @include centrar(row, center, center);
+
+            .logoRecuadro {
+                width: 30%;
+                height: 80%;
+
+                border: 1px solid red;
+                background-color: whitesmoke;
+
+                @include centrar(row, center, center);
+
+                .logoCohete {
+                    @include centrar(row, center, center);
+    
+                    border: 3px solid blue;    
+                    border-radius: 50%;
+                    background-color: yellow;
+    
+                    -webkit-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    -moz-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);                    
+    
+                    height: 1.5em;
+                    width: 1.5em;
+                    font-size: 3em;
+                }
+    
+                .titulo {
+                    h1 {
+                        margin: 0 0 0 10px;
+                        font-size: 2em;
+                        color: map-get($color, texto-h1);
+                    }
+                }
+            }
+        }
+
+        menu {
+            grid-area: menu;
+
+            position: relative;
+
+            padding: 0;
+            margin: 0;
+
+            background-color: blue;
+
+            @include centrar(row, center, center);
+        
+            color: yellow;
+        
+            .menu-principal {
+                padding: 0;
+
+                @include centrar(row, space-between, center);
+
+                li {
+                    list-style: none;
+                }
+
+                li:hover .menu-interior {
+                    visibility: visible;
+                }
+            }
+        
+            .menu-interior {
+        
+                position: absolute;
+        
+                visibility: hidden;
+        
+                /* 1 - Estilo Desplegable - Sacar Identado */
+                padding: 0; // saco el identado
+        
+                /* 2 - Estilo Desplegable - Fondo, Borde, Color, Ancho */
+                background-color: lightblue;
+                border: 1px solid black;
+                color: black;
+                width: 150px;
+        
+                /* 3 - Estilo Desplegable - Efecto Sombreado */
+                -webkit-box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+                -moz-box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+                box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+
+                /* 4 - Estilo Desplegable - Saco Subrayado */
+                a {
+                    text-decoration: none;
+                    color: darkslateblue;
+                }
+
+                /* 5 - Estilo Desplegable - Recuadro Interior */
+                li {
+                    list-style: none;
+                    padding: 5px;
+                    border-bottom: 1px solid black;
+                }
+                
+                /* 6 - Estilo Desplegable - Efecto Color */        
+                li:hover {
+                    background-color: lightgoldenrodyellow;
+                }
+            }
+        }
+
+        main {
+            grid-area: main;
+
+            background-image: url(../imagenes/Cumulo_Galaxias.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+            @include centrar(column, space-between, center);
+
+            color: whitesmoke;
+            
+            .objetivo {
+                width: 90%;
+            
+                h2 {
+                    font-size: 3em;
+                    color: lightblue;
+                }
+
+                .detalle {
+                    width: 90%;
+                    font-size: 1em;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+}

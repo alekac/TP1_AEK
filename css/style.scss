@@ -1,15 +1,847 @@
 
-body {
+// PALETA DE COLORES
+
+@import 'colores';
+
+// FUNCION
+
+@mixin centrar ($direccion, $content, $items) {
+    display: flex;
+    flex-direction: $direccion;
+    justify-content: $content;
+    align-items: $items;
+}
+
+// ESTILO GLOBAL BODY
+
+html, body {
     margin: 0;
     padding: 0;
-    background-color: lightseagreen;
+    box-sizing: border-box;
+}
+
+// MOBILE RESPONSIVE
+
+@media (max-width: 450px) {
+
+    body {
+        background-color: map-get($color, fondo-body);
+
+        height: 300vh;
+    }
+
+    .contenedor {
+        display: grid;
+
+        grid-template-areas: 
+        "header"
+        "logo"
+        "main"
+        "article"
+        "social"
+        ;
+    
+        grid-template-rows: 0.1fr 2.5fr 10fr 55fr 1.5fr;
+        grid-template-columns: 1fr;
+
+        menu {
+            display: none;
+        }
+
+        #viaLacteaLaptop {
+            display: none;
+        }
+
+        #agujeroNegroLaptop {
+            display: none;
+        }
+
+        #magnetarLaptop {
+            display: none;
+        }
+
+        #agujeroGusanoLaptop {
+            display: none;
+        }
+
+        .up {
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            background-color: azure;
+
+            @include centrar(row, center, center);
+        
+            position: fixed;
+            top: 300px;
+            right: 15px;
+        
+            img {
+                width: 2em;
+            }
+        }
+
+        header {
+            grid-area: header;
+
+            background-color: lightslategrey;
+
+            @include centrar(row, space-between, center);
+
+            .explorando {
+                margin-right: 1em;
+                font-size: 0.8em;
+                color: darkslategrey;
+            }
+
+            .logoHamburguesa {
+                z-index: 1;
+        
+                position: relative;
+
+                height: 1.5em;
+                width: 1.5em;
+
+                @include centrar(row, center, center);
+
+                i {
+                    color: darkslategrey;
+                }
+            }
+        }
+
+        /* Le pongo en plano atrás */
+        header .logoHamburguesa:target {
+            z-index: -1;
+        }
+
+        #menu {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            
+            margin: 0;
+            padding: 0;
+
+            a {
+                text-decoration: none;
+            }
+
+            ul {
+                border: 1px solid darkslategrey;
+                background-color: chocolate;
+            
+                padding: 5px 5px 5px 5px;
+            }
+
+            ul li {
+                list-style: none;
+                border: 1px solid darkslategray;
+
+                padding: 5px;
+            }
+
+            /* Transicion */
+            opacity: 0;
+            transition: opacity 2s;
+
+            .xMenu {
+                height: 1.5em;
+                width: 1.5em;
+                background-color: gray;
+                border: 1px solid darkslategrey;
+
+                @include centrar(row, center, center);
+            }
+        } 
+
+        #menu:target {
+            /* Le pongo en plano adelante */
+            z-index: 5;
+        
+            a {
+                color: whitesmoke;
+            }
+        
+            ul li {
+                color: whitesmoke;
+            }
+        
+            /* Transicion */
+            opacity: 1;
+        }
+        
+        .logo {
+            grid-area: logo;
+
+            background-color: map-get($color, fondo-logo);
+
+            @include centrar(row, center, center);
+
+            .logoRecuadro {
+                @include centrar(row, center, center);
+
+                .logoCohete {
+                    @include centrar(row, center, center);
+    
+                    border: 3px solid blue;    
+                    border-radius: 50%;
+                    background-color: yellow;
+    
+                    -webkit-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    -moz-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);                    
+    
+                    height: 1em;
+                    width: 1em;
+                    font-size: 2.5em;
+                }
+    
+                .titulo {
+                    h1 {
+                        margin: 0 0 0 10px;
+                        font-size: 2em;
+                        color: map-get($color, texto-h1);                       
+                    }
+                }
+            }
+        }
+
+        main {
+            grid-area: main;
+
+            background-image: url(../imagenes/Hubble_Mobile.jpg);
+            background-repeat: no-repeat;
+
+            @include centrar(column, space-between, center);
+            
+            .objetivo {
+                width: 90%;
+                font-size: 1em;
+                color: lightblue;
+
+            .detalle {
+                    width: 90%;
+                    font-size: 0.8em;
+                    text-align: justify;
+
+                    .detalleTablet {
+                        display: none;
+                    }
+        
+                    .detalleLaptop {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        article {
+            grid-area: article;
+
+            background-color: map-get($color, fondo-card);
+
+            @include centrar(column, space-around, center);
+
+            .card {
+                width: 80%;
+
+                border: 1px solid lightblue;  
+
+                -webkit-box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+                -moz-box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+                box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+
+                img {
+                    width: 100%;
+                }
+
+                h3 {
+                    padding: 10px;
+                    font-size: 20px;
+                    margin: 0;
+                    color: map-get($color, texto-h3);
+                }
+
+                p {
+                    padding: 10px;
+                    font-size: 12px;
+                    margin: 0;
+
+                    text-align: justify;
+                }
+            }
+        }
+
+        .social {
+            grid-area: social;
+
+            background-color: darkslategray;
+
+            @include centrar(row, center, center);
+
+            font-size: 1.5em;
+
+            i {
+                color: whitesmoke;
+                margin: 10px;
+            }
+        }
+    }
+}
+
+
+// TABLET RESPONSIVE
+
+@media (min-width: 451px) and (max-width: 800px) {
+
+    body {
+        background-color: map-get($color, fondo-body);
+
+        height: 200vh;
+    }
+
+    .contenedor {
+        display: grid;
+
+        grid-template-areas: 
+        "header"
+        "logo"
+        "main"
+        "article"
+        "social"
+        ;
+    
+        grid-template-rows: 0.1fr 3.5fr 18fr 80fr 1.5fr;
+        grid-template-columns: 1fr;
+
+        menu {
+            display: none;
+        }
+
+        #viaLacteaLaptop {
+            display: none;
+        }
+
+        #agujeroNegroLaptop {
+            display: none;
+        }
+
+        #magnetarLaptop {
+            display: none;
+        }
+
+        #agujeroGusanoLaptop {
+            display: none;
+        }
+
+        .up {
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            background-color: azure;
+
+            @include centrar(row, center, center);
+        
+            position: fixed;
+            top: 300px;
+            right: 15px;
+        
+            img {
+                width: 2em;
+            }
+        }
+
+        header {
+            grid-area: header;
+
+            background-color: lightblue;
+
+            @include centrar(row, space-between, center);
+
+            .explorando {
+                margin-right: 1em;
+                font-size: 0.8em;
+                color: darkslategrey;
+            }
+
+            .logoHamburguesa {
+                z-index: 1;
+        
+                position: relative;
+
+                height: 1.5em;
+                width: 1.5em;
+
+                @include centrar(row, center, center);
+
+                i {
+                    color: darkslategrey;
+                }
+            }
+        }
+
+        /* Le pongo en plano atrás */
+        header .logoHamburguesa:target {
+            z-index: -1;
+        }
+
+        #menu {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            
+            margin: 0;
+            padding: 0;
+
+            a {
+                text-decoration: none;
+            }
+
+            ul {
+                border: 1px solid darkslategrey;
+                background-color: chocolate;
+            
+                padding: 5px 5px 5px 5px;
+            }
+
+            ul li {
+                list-style: none;
+
+                border: 1px solid darkslategrey;
+
+                padding: 5px;
+            }
+
+            /* Transicion */
+            opacity: 0;
+            transition: opacity 2s;
+
+            .xMenu {
+                height: 1.5em;
+                width: 1.5em;
+                background-color: gray;
+                border: 1px solid darkslategrey;
+
+                @include centrar(row, center, center);
+            }
+        } 
+
+        #menu:target {
+            /* Le pongo en plano adelante */
+            z-index: 5;
+        
+            a {
+                color: whitesmoke;
+            }
+        
+            ul li {
+                color: whitesmoke;
+            }
+        
+            /* Transicion */
+            opacity: 1;
+        }
+        
+        .logo {
+            grid-area: logo;
+
+            background-color: map-get($color, fondo-logo);
+
+            @include centrar(row, center, center);
+
+            .logoRecuadro {
+                width: 25%;
+                height: 60%;
+
+                border: 1px solid red;
+                background-color: whitesmoke;
+
+                @include centrar(row, center, center);
+
+                .logoCohete {
+                    @include centrar(row, center, center);
+    
+                    border: 3px solid blue;    
+                    border-radius: 50%;
+                    background-color: yellow;
+    
+                    -webkit-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    -moz-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);                    
+    
+                    height: 1em;
+                    width: 1em;
+                    font-size: 2.5em;
+                }
+    
+                .titulo {
+                    h1 {
+                        margin: 0 0 0 10px;
+                        font-size: 2em;
+                        color: map-get($color, texto-h1);
+                    }
+                }
+            }
+        }
+
+        main {
+            grid-area: main;
+
+            background-image: url(../imagenes/Hubble_Tablet.jpg);
+            background-repeat: no-repeat;
+
+            @include centrar(column, space-between, center);
+
+            color: whitesmoke;
+            
+            .objetivo {
+                width: 90%;
+                font-size: 1em;
+
+                .detalle {
+                    width: 90%;
+                    font-size: 0.8em;
+                    text-align: justify;
+        
+                    .detalleLaptop {
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        article {
+            grid-area: article;
+
+            background-color: map-get($color, fondo-card);
+
+            @include centrar(column, space-around, center);
+
+            .card {
+                width: 80%;
+
+                border: 1px solid lightblue;  
+
+                -webkit-box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+                -moz-box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+                box-shadow: 0px 0px 33px -1px rgba(11,214,153,0.67);
+
+                img {
+                    width: 100%;
+                }
+
+                h3 {
+                    padding: 10px;
+                    font-size: 20px;
+                    margin: 0;
+                    color: map-get($color, texto-h3);
+                    font-size: 1.5em;
+                }
+
+                p {
+                    padding: 10px;
+                    font-size: 12px;
+                    margin: 0;
+
+                    text-align: justify;
+                }
+            }
+        }
+
+        .social {
+            grid-area: social;
+
+            background-color: darkslategray;
+
+            @include centrar(row, center, center);
+
+            font-size: 1.5em;
+
+            i {
+                color: whitesmoke;
+                margin: 10px;
+            }
+        }
+    }
+}
+
+
+// LAPTOP
+
+@media (min-width: 801px) {
+
+    body {
+        height:200vh;
+
+        background-color: map-get($color, fondo-body);
+    }
+
+    .contenedor {
+
+        .logo {
+            display: none;
+        }
+
+        header {
+            display: none;
+        }
+
+        #menu {
+            display: none;
+        }
+
+        article {
+            display: none;
+        }
+
+        display: grid;
+
+        grid-template-areas: 
+        "logo     logo        logo     logo            logo"
+        "menu     menu        menu     menu            menu"
+        "main     main        main     main            main"
+        "vacio1   viaLactea   vacio2   agujeroNegro    vacio3"
+        "vacio1   magnetar    vacio2   agujeroGusano   vacio3"
+        "social   social      social   social          social"
+        ;
+
+        grid-template-rows: 10fr 3fr 80fr 75fr 75fr 8fr;
+        grid-template-columns: 5fr 20fr 5fr 20fr 5fr;
+
+        .up {
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            background-color: azure;
+
+            @include centrar(row, center, center);
+        
+            position: fixed;
+            top: 300px;
+            right: 70px;
+        
+            img {
+                width: 2em;
+            }
+        }
+
+        .logo {
+            grid-area: logo;
+
+            background-color: map-get($color, fondo-logo);
+
+            @include centrar(row, center, center);
+
+            .logoRecuadro {
+                width: 30%;
+                height: 80%;
+
+                border: 1px solid red;
+                background-color: whitesmoke;
+
+                @include centrar(row, center, center);
+
+                .logoCohete {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+    
+                    border: 3px solid blue;    
+                    border-radius: 50%;
+                    background-color: yellow;
+
+                    -webkit-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    -moz-box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);
+                    box-shadow: 0px 0px 37px 2px rgba(23,109,140,1);                    
+
+                    height: 1.5em;
+                    width: 1.5em;
+                    font-size: 3em;
+                }
+    
+                .titulo {
+                    h1 {
+                        margin: 0 0 0 10px;
+                        font-size: 2em;
+                        color: map-get($color, texto-h1);
+                    }
+                }
+            }
+        }
+
+        menu {
+            grid-area: menu;
+
+            position: relative;
+
+            padding: 0;
+            margin: 0;
+
+            background-color: blue;
+
+            @include centrar(row, center, center);
+
+            color: yellow;
+        
+            .menu-principal {
+                padding: 0;
+
+                @include centrar(row, space-between, center);
+            
+                width: 30%;
+
+                li {
+                    list-style: none;
+                }
+
+                li:hover .menu-interior {
+                    visibility: visible;
+                }
+            }
+        
+            .menu-interior {
+        
+                position: absolute;
+        
+                visibility: hidden;
+        
+                /* 1 - Estilo Desplegable - Sacar Identado */
+                padding: 0; // saco el identado
+        
+                /* 2 - Estilo Desplegable - Fondo, Borde, Color, Ancho */
+                background-color: lightblue;
+                border: 1px solid black;
+                color: black;
+                width: 150px;
+        
+                /* 3 - Estilo Desplegable - Efecto Sombreado */
+                -webkit-box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+                -moz-box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+                box-shadow: 10px 10px 9px -4px rgba(0,0,0,0.75);
+
+                /* 4 - Estilo Desplegable - Saco Subrayado */
+                a {
+                    text-decoration: none;
+                    color: darkslateblue;
+                }
+
+                /* 5 - Estilo Desplegable - Recuadro Interior */
+                li {
+                    list-style: none;
+                    padding: 5px;
+                    border-bottom: 1px solid black;
+                }
+                
+                /* 6 - Estilo Desplegable - Efecto Color */        
+                li:hover {
+                    background-color: lightgoldenrodyellow;
+                }
+            }
+        }
+
+        main {
+            grid-area: main;
+
+            background-image: url(../imagenes/Hubble_Tablet.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+            @include centrar(column, space-between, center);
+
+            color: whitesmoke;
+            
+            .objetivo {
+                width: 90%;
+            
+                h2 {
+                    font-size: 3em;
+                    color: map-get($color, texto-h2);
+                }
+
+                .detalle {
+                    width: 90%;
+                    font-size: 1em;
+                    text-align: justify;
+                }
+            }
+        }
+
+
+        %cardLaptop {
+            background-color: map-get($color, fondo-card);
+
+            @include centrar(column, center, center);            
+
+            .card {
+
+                @include centrar(column, center, center);
+    
+                border: 1px solid lightblue;
+
+                width: 100%;
+                box-shadow: 5px 5px 15px black;
+
+                h3 {
+                    color: map-get($color, texto-h3);
+                    font-size: 2em;
+                }
+
+                p {
+                    margin: 15px;
+                    text-align: justify;
+                }
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+          
+
+        #viaLacteaLaptop {
+            grid-area: viaLactea;
+
+            @extend %cardLaptop;
+        }
+
+        #agujeroNegroLaptop {
+            grid-area: agujeroNegro;
+
+            @extend %cardLaptop;
+        }
+
+        #magnetarLaptop {
+            grid-area: magnetar;
+
+            @extend %cardLaptop;
+        }
+
+        #agujeroGusanoLaptop {
+            grid-area: agujeroGusano;
+
+            @extend %cardLaptop;
+        }
+
+        .social {
+            grid-area: social;
+
+            background-color: darkslategray;
+
+            @include centrar(row, center, center);
+
+            font-size: 2em;
+        
+            i {
+                margin: 10px;
+                color: whitesmoke;
+            }
+        }
+    }
 }
 
 
 
-p {
-    color: blue;
-    font-size: 3em;
-}
 
 
